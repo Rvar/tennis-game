@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tableScore {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.game-list {
+  margin-top: 50px;
+}
+
+.btnWin {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.score {
+  font-weight: bold;
+}
+
+.message {
+  font-weight: bold;
+  text-decoration-line: underline;
+}

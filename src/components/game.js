@@ -17,16 +17,14 @@ function Game(props) {
   const [scoreTable, setScoreTable] = useState([]);
 
   const listScoreTable = scoreTable.map(scoreRow => (
-      <li className="label-score-row">
-          {props.playerOne.name} : {scoreRow.scorePlayerOne} {translateScore[0]} - {scoreRow.scorePlayerTwo} : {props.playerTwo.name}
-          <div>
-            {scoreRow.message}
-          </div>
-      </li>
+            <li className="label-score-row">
+                  {scoreRow.scorePlayerOne} {scoreRow.scorePlayerTwo}
+                <div className="message">
+                  {scoreRow.message}
+                </div>
+            </li>
       )
     );
-
-
 
   function addPointPlayerOne() {
     setScorePlayerOne(++props.playerOne.score);
@@ -38,11 +36,41 @@ function Game(props) {
     updateScoreTable();
   }
 
+  //Update scoreTable
+  function updateScoreTable() {
+
+    let message = checkScore();
+
+    let scorePlOne = <span className = "tableScore">
+                      {props.playerOne.name} :
+                      <span className = "score"> {translateScore[props.playerOne.score]} </span>
+                    </span>;
+    let scorePlTwo = <span className = "tableScore">
+                    <span className = "score"> {translateScore[props.playerTwo.score]} </span> :
+                     {props.playerTwo.name}
+                    </span>;
+
+    if(translateScore[props.playerOne.score] == null) {
+      scorePlOne = "";
+    }
+    if(translateScore[props.playerTwo.score] == null) {
+      scorePlTwo = "";
+    }
+
+      const newScoreRow = {
+        scorePlayerOne: scorePlOne,
+        scorePlayerTwo: scorePlTwo,
+        message: message
+      };
+
+      setScoreTable([...scoreTable, newScoreRow]);
+  }
+
   function checkScore(){
 
     if(hasWinner()){
       setHaveAWinner(true);
-      return "Winner : " + playerWithHighestScore();
+      return playerWithHighestScore() + " Wins";
     }
 
     if(isDeuce()){
@@ -50,15 +78,24 @@ function Game(props) {
     }
 
     if(hasAdvantage()){
-      return "Advantage " + playerWithHighestScore();
+      return "Advantage : " + playerWithHighestScore();
     }
   }
 
   function isDeuce() {
     let splO = props.playerOne.score;
     let splT = props.playerTwo.score;
+    let isDeuce = splO >= 3 && splO === splT;
 
-		return splO >= 3 && splO === splT;
+    //On revient toujours à 3 pour un Deuce
+    if(isDeuce){
+      setScorePlayerOne(3);
+      setScorePlayerTwo(3);
+      props.playerOne.score = 3;
+      props.playerTwo.score = 3;
+    }
+
+		return isDeuce;
 	}
 
   function playerWithHighestScore() {
@@ -83,40 +120,45 @@ function Game(props) {
     		return (splT >= 4 && splT === splO + 1) || (splO >= 4 && splO === splT + 1)
 	   }
 
-  //Update scoreTable
-  function updateScoreTable() {
 
-    let message = checkScore();
-
-    const newScoreRow = {
-      scorePlayerOne: props.playerOne.score,
-      scorePlayerTwo: props.playerTwo.score,
-      message: message
-    };
-
-    setScoreTable([...scoreTable, newScoreRow]);
+  function resetGame(){
+    props.playerOne.score = 0;
+    props.playerTwo.score = 0;
+    setScorePlayerOne(0);
+    setScorePlayerTwo(0);
+    setScoreTable([]);
+    setHaveAWinner(false);
   }
 
   return (
     <div className="point">
       <label className="label-score">
-        {props.playerOne.name} {scorePlayerOne}
-        {!haveAWinner &&
-          <button type="button" className="btnWin" onClick={addPointPlayerOne}>
-            win
-          </button>
+      {!haveAWinner &&
+          <span>
+            {props.playerOne.name} :   <span className = "score"> {translateScore[scorePlayerOne]}</span>
+            <button type="button" className="btnWin" onClick={addPointPlayerOne}>
+              win
+            </button>
+            -
+          </span>
         }
-         -
          {!haveAWinner &&
-           <button type="button" className="btnWin" onClick={addPointPlayerTwo}>
-             win
-           </button>
-        }
-        {scorePlayerTwo} {props.playerTwo.name}
+           <span>
+             <button type="button" className="btnWin" onClick={addPointPlayerTwo}>
+               win
+             </button>
+             <span className = "score">  {translateScore[scorePlayerTwo]} </span> : {props.playerTwo.name}
+           </span>
+         }
       </label>
       <ul>
         {listScoreTable}
       </ul>
+      {haveAWinner &&
+        <button type="button" className="btnReset" onClick={resetGame}>
+          Reset
+        </button>
+      }
     </div>
   );
 }
