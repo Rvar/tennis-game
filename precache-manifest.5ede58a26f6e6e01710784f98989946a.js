@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a6c4f819281ebae76d6fce5c1b42e9db",
+    "revision": "3183bca9946200b070ee9b146ccaab3c",
     "url": "/tennis-game/index.html"
   },
   {
-    "revision": "73037226ae03833910ec",
-    "url": "/tennis-game/static/css/main.9d31794a.chunk.css"
+    "revision": "2761421e448b41ee0747",
+    "url": "/tennis-game/static/css/main.00383eca.chunk.css"
   },
   {
     "revision": "a9182d245911404c8880",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tennis-game/static/js/2.3e897170.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "73037226ae03833910ec",
-    "url": "/tennis-game/static/js/main.5f4f3699.chunk.js"
+    "revision": "2761421e448b41ee0747",
+    "url": "/tennis-game/static/js/main.075023c2.chunk.js"
   },
   {
     "revision": "78f05befababc9ae0497",
