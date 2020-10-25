@@ -26,17 +26,19 @@ function Game(props) {
       )
     );
 
+  /*Add points player One*/
   function addPointPlayerOne() {
     setScorePlayerOne(++props.playerOne.score);
     updateScoreTable();
   }
 
+  /*Add points player Two*/
   function addPointPlayerTwo() {
     setScorePlayerTwo(++props.playerTwo.score);
     updateScoreTable();
   }
 
-  //Update scoreTable
+  /*Update score table*/
   function updateScoreTable() {
 
     let message = checkScore();
@@ -46,16 +48,14 @@ function Game(props) {
                       <span className = "score"> {translateScore[props.playerOne.score]} </span>
                     </span>;
     let scorePlTwo = <span className = "tableScore">
-                    <span className = "score"> {translateScore[props.playerTwo.score]} </span> :
-                     {props.playerTwo.name}
+                      <span className = "score"> {translateScore[props.playerTwo.score]} </span> :
+                       {props.playerTwo.name}
                     </span>;
 
-    if(translateScore[props.playerOne.score] == null) {
-      scorePlOne = "";
-    }
-    if(translateScore[props.playerTwo.score] == null) {
-      scorePlTwo = "";
-    }
+      if(translateScore[props.playerOne.score] == null || translateScore[props.playerTwo.score] == null ){
+        scorePlOne = "";
+        scorePlTwo = "";
+      }
 
       const newScoreRow = {
         scorePlayerOne: scorePlOne,
@@ -66,6 +66,7 @@ function Game(props) {
       setScoreTable([...scoreTable, newScoreRow]);
   }
 
+  /*Check scores player one and two*/
   function checkScore(){
 
     if(hasWinner()){
@@ -83,11 +84,10 @@ function Game(props) {
   }
 
   function isDeuce() {
-    let splO = props.playerOne.score;
-    let splT = props.playerTwo.score;
-    let isDeuce = splO >= 3 && splO === splT;
+    let isDeuce = props.playerOne.score >= 3 &&
+     props.playerOne.score === props.playerTwo.score;
 
-    //On revient toujours à 3 pour un Deuce
+    //Each player goes back to 3 when Deuce
     if(isDeuce){
       setScorePlayerOne(3);
       setScorePlayerTwo(3);
@@ -107,17 +107,13 @@ function Game(props) {
 	}
 
    function hasWinner() {
-       let splO = props.playerOne.score;
-       let splT = props.playerTwo.score;
-
-       return (splT >= 4 && splT >= splO + 2) || (splO >= 4 && splO >= splT + 2)
+       return (props.playerTwo.score >= 4 && props.playerTwo.score >= props.playerOne.score + 2) ||
+        (props.playerOne.score >= 4 && props.playerOne.score >= props.playerTwo.score + 2)
   	}
 
     function hasAdvantage() {
-        let splO = props.playerOne.score;
-        let splT = props.playerTwo.score;
-
-    		return (splT >= 4 && splT === splO + 1) || (splO >= 4 && splO === splT + 1)
+    		return (props.playerTwo.score >= 4 && props.playerTwo.score === props.playerOne.score + 1) ||
+         (props.playerOne.score >= 4 && props.playerOne.score === props.playerTwo.score + 1)
 	   }
 
 
@@ -130,34 +126,34 @@ function Game(props) {
     setHaveAWinner(false);
   }
 
+  var scorePlOne = <span className = "score"> {translateScore[scorePlayerOne]}</span>;
+  var scorePlTwo = <span className = "score">  {translateScore[scorePlayerTwo]} </span>;
+  var btnWinPlOne = <button type="button" className="btnWin" onClick={addPointPlayerOne}> win </button>;
+  var btnWinPlTwo =  <button type="button" className="btnWin" onClick={addPointPlayerTwo}> win </button>;
+
+  //In order to display Av
+  if(translateScore[props.playerOne.score] == null) {
+    scorePlOne = <span className = "score"> Av </span>;
+  }
+  if(translateScore[props.playerTwo.score] == null) {
+    scorePlTwo = <span className = "score"> Av </span>;
+  }
+
   return (
     <div className="point">
       <label className="label-score">
-      {!haveAWinner &&
-          <span>
-            {props.playerOne.name} :   <span className = "score"> {translateScore[scorePlayerOne]}</span>
-            <button type="button" className="btnWin" onClick={addPointPlayerOne}>
-              win
-            </button>
-            -
-          </span>
+        {!haveAWinner &&
+          <span> {props.playerOne.name} : {scorePlOne} {btnWinPlOne} - </span>
         }
-         {!haveAWinner &&
-           <span>
-             <button type="button" className="btnWin" onClick={addPointPlayerTwo}>
-               win
-             </button>
-             <span className = "score">  {translateScore[scorePlayerTwo]} </span> : {props.playerTwo.name}
-           </span>
-         }
+        {!haveAWinner &&
+          <span> {btnWinPlTwo} {scorePlTwo} : {props.playerTwo.name} </span>
+        }
       </label>
       <ul>
         {listScoreTable}
       </ul>
       {haveAWinner &&
-        <button type="button" className="btnReset" onClick={resetGame}>
-          Reset
-        </button>
+        <button type="button" className="btnReset" onClick={resetGame}> Reset </button>
       }
     </div>
   );

@@ -12,6 +12,17 @@ code {
     monospace;
 }
 
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  color: white;
+  margin-bottom: 50px;
+}
+
+
 .tableScore {
   margin-left: 10px;
   margin-right: 10px;
