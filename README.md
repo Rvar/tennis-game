@@ -1,7 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Tennis Game
 
+![screenshot-tennis-game](https://user-images.githubusercontent.com/5542529/97121294-73d8a380-171d-11eb-9fc8-f237975f5286.png)
 
 In the project directory, you can run:
 
