@@ -45,3 +45,7 @@ code {
   font-weight: bold;
   text-decoration-line: underline;
 }
+
+li {
+    list-style-type: none;
+}

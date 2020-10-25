@@ -141,6 +141,9 @@ function Game(props) {
 
   return (
     <div className="point">
+      <ul>
+        {listScoreTable}
+      </ul>
       <label className="label-score">
         {!haveAWinner &&
           <span> {props.playerOne.name} : {scorePlOne} {btnWinPlOne} - </span>
@@ -149,9 +152,6 @@ function Game(props) {
           <span> {btnWinPlTwo} {scorePlTwo} : {props.playerTwo.name} </span>
         }
       </label>
-      <ul>
-        {listScoreTable}
-      </ul>
       {haveAWinner &&
         <button type="button" className="btnReset" onClick={resetGame}> Reset </button>
       }
