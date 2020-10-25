@@ -42,25 +42,17 @@ function Tennis(props) {
 
     return (
         <div className="player stack-large">
-        {playerList.length === 0 &&
-          <span>
-            Player 1 Name : <PlayerForm addPlayer={addPlayer} number="1"/>
-          </span>
-        }
-        {playerList.length === 1 &&
-          <span>
-            Player 2 Name : <PlayerForm addPlayer={addPlayer} number="2"/>
-          </span>
-        }
+          {playerList.length === 0 &&
+            <span> Player 1 Name : <PlayerForm addPlayer={addPlayer} number="1"/> </span>
+          }
+          {playerList.length === 1 &&
+            <span> Player 2 Name : <PlayerForm addPlayer={addPlayer} number="2"/> </span>
+          }
           {playerList}
           {playerList.length === 2 && gameList.length === 0 &&
-            <button type="button" className="btn" onClick={startGame}>
-              Start Game !
-            </button>
+            <button type="button" className="btn" onClick={startGame}> Start Game ! </button>
           }
-          <div className="game-list">
-            {gameList}
-          </div>
+          <div className="game-list"> {gameList} </div>
         </div>
       );
 }

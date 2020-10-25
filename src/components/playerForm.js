@@ -26,9 +26,7 @@ function PlayerForm(props) {
         value={name}
         onChange={handleChange}
       />
-      <button type="submit" className="btn add">
-        Ok
-      </button>
+      <button type="submit" className="btn add"> Ok </button>
     </form>
   );
 }

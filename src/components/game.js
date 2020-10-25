@@ -44,7 +44,7 @@ function Game(props) {
                     </span>;
     let scorePlTwo = <span className = "tableScore">
                       <span className = "score"> {translateScore[props.playerTwo.score]} </span> :
-                       {props.playerTwo.name}
+                      {props.playerTwo.name}
                     </span>;
 
       if(translateScore[props.playerOne.score] == null || translateScore[props.playerTwo.score] == null ){
@@ -82,7 +82,7 @@ function Game(props) {
     let isDeuce = props.playerOne.score >= 3 &&
      props.playerOne.score === props.playerTwo.score;
 
-    //Each player goes back to 3 when Deuce
+    /*Each player goes back to 3 when Deuce*/
     if(isDeuce){
       setScorePlayerOne(3);
       setScorePlayerTwo(3);
@@ -126,7 +126,7 @@ function Game(props) {
   var btnWinPlOne = <button type="button" className="btnWin" onClick={addPointPlayerOne}> win </button>;
   var btnWinPlTwo =  <button type="button" className="btnWin" onClick={addPointPlayerTwo}> win </button>;
 
-  //In order to display Av
+  /*In order to display Av*/
   if(translateScore[props.playerOne.score] == null) {
     scorePlOne = <span className = "score"> Av </span>;
   }
