@@ -17,7 +17,6 @@ function Tennis(props) {
       )
     );
 
-    //A CHANGER : PEUX NE PAS METTRE DE LIST !!!!!!!!!!!!!!!!!
     const gameList = games.map(game => (
         <Game
           playerOne={game.playerOne}
