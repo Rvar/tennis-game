@@ -2,12 +2,7 @@ import React, { useState } from "react";
 
 function Game(props) {
 
-  let translateScore = {
-      0 : "Love",
-      1 : "Fifteen",
-      2 : "Thirty",
-      3 : "Forty"
-    }
+  let translateScore = ["Love", "Fifteen", "Thirty", "Forty"];
 
   const [scorePlayerOne, setScorePlayerOne] = useState(0);
   const [scorePlayerTwo, setScorePlayerTwo] = useState(0);
@@ -144,14 +139,14 @@ function Game(props) {
       <ul>
         {listScoreTable}
       </ul>
-      <label className="label-score">
+      <span className="span-score">
         {!haveAWinner &&
           <span> {props.playerOne.name} : {scorePlOne} {btnWinPlOne} - </span>
         }
         {!haveAWinner &&
           <span> {btnWinPlTwo} {scorePlTwo} : {props.playerTwo.name} </span>
         }
-      </label>
+      </span>
       {haveAWinner &&
         <button type="button" className="btnReset" onClick={resetGame}> Reset </button>
       }
