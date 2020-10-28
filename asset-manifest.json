@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/tennis-game/static/css/main.00383eca.chunk.css",
-    "main.js": "/tennis-game/static/js/main.a2b26772.chunk.js",
-    "main.js.map": "/tennis-game/static/js/main.a2b26772.chunk.js.map",
+    "main.js": "/tennis-game/static/js/main.8f70cfe9.chunk.js",
+    "main.js.map": "/tennis-game/static/js/main.8f70cfe9.chunk.js.map",
     "runtime-main.js": "/tennis-game/static/js/runtime-main.3fda5099.js",
     "runtime-main.js.map": "/tennis-game/static/js/runtime-main.3fda5099.js.map",
-    "static/js/2.3e897170.chunk.js": "/tennis-game/static/js/2.3e897170.chunk.js",
-    "static/js/2.3e897170.chunk.js.map": "/tennis-game/static/js/2.3e897170.chunk.js.map",
+    "static/js/2.eec08d8c.chunk.js": "/tennis-game/static/js/2.eec08d8c.chunk.js",
+    "static/js/2.eec08d8c.chunk.js.map": "/tennis-game/static/js/2.eec08d8c.chunk.js.map",
     "index.html": "/tennis-game/index.html",
-    "precache-manifest.d4cc5412bfafe9156f629dc4f6064d91.js": "/tennis-game/precache-manifest.d4cc5412bfafe9156f629dc4f6064d91.js",
+    "precache-manifest.945857c7062eb4c969f63acb7d85a87f.js": "/tennis-game/precache-manifest.945857c7062eb4c969f63acb7d85a87f.js",
     "service-worker.js": "/tennis-game/service-worker.js",
     "static/css/main.00383eca.chunk.css.map": "/tennis-game/static/css/main.00383eca.chunk.css.map",
-    "static/js/2.3e897170.chunk.js.LICENSE.txt": "/tennis-game/static/js/2.3e897170.chunk.js.LICENSE.txt"
+    "static/js/2.eec08d8c.chunk.js.LICENSE.txt": "/tennis-game/static/js/2.eec08d8c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3fda5099.js",
-    "static/js/2.3e897170.chunk.js",
+    "static/js/2.eec08d8c.chunk.js",
     "static/css/main.00383eca.chunk.css",
-    "static/js/main.a2b26772.chunk.js"
+    "static/js/main.8f70cfe9.chunk.js"
   ]
 }
