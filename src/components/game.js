@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 function Game(props) {
 
@@ -12,8 +13,8 @@ function Game(props) {
   const [scoreTable, setScoreTable] = useState([]);
 
   const listScoreTable = scoreTable.map(scoreRow => (
-            <li className="label-score-row">
-                  {scoreRow.scorePlayerOne} {scoreRow.scorePlayerTwo}
+            <li className="label-score-row" key={scoreRow.id}>
+                {scoreRow.scorePlayerOne} {scoreRow.scorePlayerTwo}
                 <div className="message">
                   {scoreRow.message}
                 </div>
@@ -53,6 +54,7 @@ function Game(props) {
       }
 
       const newScoreRow = {
+        id: "scoreId-"+ nanoid(),
         scorePlayerOne: scorePlOne,
         scorePlayerTwo: scorePlTwo,
         message: message
@@ -106,10 +108,10 @@ function Game(props) {
         (props.playerOne.score >= 4 && props.playerOne.score >= props.playerTwo.score + 2)
   	}
 
-    function hasAdvantage() {
-    		return (props.playerTwo.score >= 4 && props.playerTwo.score === props.playerOne.score + 1) ||
-         (props.playerOne.score >= 4 && props.playerOne.score === props.playerTwo.score + 1)
-	   }
+  function hasAdvantage() {
+  		return (props.playerTwo.score >= 4 && props.playerTwo.score === props.playerOne.score + 1) ||
+       (props.playerOne.score >= 4 && props.playerOne.score === props.playerTwo.score + 1)
+   }
 
 
   function resetGame(){
@@ -135,7 +137,7 @@ function Game(props) {
   }
 
   return (
-    <div className="point">
+    <div className="point" key={props.id}>
       <ul>
         {listScoreTable}
       </ul>

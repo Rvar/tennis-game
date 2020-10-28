@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PlayerForm from "./components/playerForm";
 import Player from "./components/player";
 import Game from "./components/game";
+import { nanoid } from "nanoid";
 
 function Tennis(props) {
 
@@ -10,6 +11,7 @@ function Tennis(props) {
 
   const playerList = players.map(player => (
         <Player
+          key={player.id}
           name={player.name}
           number={player.number}
           score={player.score}
@@ -19,6 +21,7 @@ function Tennis(props) {
 
     const gameList = games.map(game => (
         <Game
+          key={game.id}
           playerOne={game.playerOne}
           playerTwo={game.playerTwo}
         />
@@ -26,7 +29,7 @@ function Tennis(props) {
     );
 
     function addPlayer(name, number) {
-      const newPlayer = {name: name, number: number};
+      const newPlayer ={id: "playerId-"+ nanoid(), name: name, number: number};
       setPlayers([...players, newPlayer]);
     }
 
@@ -35,7 +38,7 @@ function Tennis(props) {
           return {...player, score: 0}
       });
       setPlayers(editedplayerList);
-      const newGame = {playerOne: editedplayerList[0], playerTwo: editedplayerList[1]};
+      const newGame = {id: "gameId-"+ nanoid(), playerOne: editedplayerList[0], playerTwo: editedplayerList[1]};
 
       setGames([...games, newGame]);
     }

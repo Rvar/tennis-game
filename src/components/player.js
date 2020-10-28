@@ -2,7 +2,7 @@ import React from "react";
 
 function Player(props) {
   return (
-    <div className="player">
+    <div className="player" key={props.id}>
       <label className="label-player">
           Player {props.number} : {props.name}
       </label>
